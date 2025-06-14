@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rexz Official - Solusi Digital Terbaik</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4285f4; /* Biru cerah */
+            --secondary: #1a73e8; /* Biru lebih gelap */
+            --accent: #34a853; /* Hijau untuk aksen */
+            --light: #f8f9ff;
+            --dark: #1e1e2d;
+            --success: #00d25b;
+            --warning: #ffab00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e3eeff 100%);
+            color: var(--dark);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Background Animation */
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle var(--duration, 5s) infinite ease-in-out;
+        }
+
+        .star:nth-child(2n) {
+            background: #c8e1ff;
+        }
+
+        .star:nth-child(3n) {
+            background: #4285f4;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(66, 133, 244, 0.5);
+            animation: glow 2s infinite alternate;
+        }
+
+        .logo h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 10px rgba(66, 133, 244, 0.5); }
+            to { box-shadow: 0 0 20px rgba(66, 133, 244, 0.8); }
+        }
+
+        .menu-toggle {
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .menu-toggle:hover {
+            transform: rotate(90deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 5%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            overflow: hidden;
+            display: none;
+            z-index: 1000;
+            transform-origin: top right;
+            animation: scaleIn 0.2s ease-out;
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-menu a {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1.2rem;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s;
+            gap: 0.8rem;
+        }
+
+        .dropdown-menu a:hover {
+            background: #e8f0fe;
+            color: var(--primary);
+            padding-left: 1.5rem;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Home Page */
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .main-logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: float 4s ease-in-out infinite, glow 2s infinite alternate;
+            overflow: hidden;
+        }
+
+        .main-logo img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .welcome-text {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            color: var(--primary);
+            font-size: 1.4rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+            background: var(--primary);
+            color: white;
+        }
+
+        .quick-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .nav-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(66, 133, 244, 0.15);
+            border-color: rgba(66, 133, 244, 0.3);
+        }
+
+        .nav-card i {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Product Page */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            border-left: 4px solid var(--primary);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(66, 133, 244, 0.2);
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-title .price {
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .product-desc {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .server-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .server-tag {
+            background: #e8f0fe;
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .btn-buy {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-buy:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.3);
+        }
+
+        /* Scripts Page */
+        .scripts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .script-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            border: 2px solid #e8f0fe;
+        }
+
+        .script-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(66, 133, 244, 0.2);
+            border-color: var(--primary);
+        }
+
+        .script-image {
+            height: 180px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .script-info {
+            padding: 1.5rem;
+        }
+
+        .script-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .script-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .script-date {
+            font-size: 0.85rem;
+            color: #777;
+            background: #e8f0fe;
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+        }
+
+        .price-tag {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            align-items: center;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #777;
+        }
+
+        .promo-price {
+            font-weight: 700;
+            color: #ea4335;
+            font-size: 1.2rem;
+        }
+
+        .script-desc {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+        }
+
+        .script-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .feature-tag {
+            background: #e8f0fe;
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .script-actions {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
+        }
+
+        .btn-review, .btn-download {
+            flex: 1;
+            padding: 0.6rem;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-review {
+            background: #ffd166;
+            color: #7d6600;
+            border: 2px solid #ffc44d;
+        }
+
+        .btn-review:hover {
+            background: #ffc44d;
+            transform: translateY(-3px);
+            box-shadow: 0 3px 10px rgba(255, 193, 77, 0.3);
+        }
+
+        .btn-download {
+            background: #06d6a0;
+            color: #006442;
+            border: 2px solid #05b78a;
+        }
+
+        .btn-download:hover {
+            background: #05b78a;
+            transform: translateY(-3px);
+            box-shadow: 0 3px 10px rgba(5, 183, 138, 0.3);
+        }
+
+        .btn-buy-script {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-buy-script:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.3);
+        }
+
+        /* Testimonial Page */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(66, 133, 244, 0.2);
+        }
+
+        .testimonial-image {
+            height: 250px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .testimonial-caption {
+            padding: 1.2rem;
+            text-align: center;
+            font-weight: 500;
+            color: #555;
+        }
+
+        /* About Page */
+        .about-content {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .about-text {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: #e8f0fe;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Contact Page */
+        .contact-content {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            padding: 0.8rem;
+            background: #f8f9ff;
+            border-radius: 10px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .contact-text {
+            color: #555;
+        }
+
+        .btn-contact {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 1.5rem;
+        }
+
+        .btn-contact:hover {
+            opacity: 0.9;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(66, 133, 244, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 3rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            padding: 0.6rem 1.2rem;
+            background: #e8f0fe;
+            border-radius: 30px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .back-button:hover {
+            background: #d2e3fc;
+            transform: translateX(-5px);
+        }
+
+        /* Music Control */
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            z-index: 100;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            overflow: hidden;
+            animation: scaleIn 0.3s;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .main-logo {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .quick-nav {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .about-content, .contact-content {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .main-logo {
+                width: 160px;
+                height: 160px;
+            }
+            
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .quick-nav {
+                grid-template-columns: 1fr;
+            }
+            
+            .dropdown-menu {
+                width: 150px;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .script-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="background-animation" id="stars"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="https://i.supa.codes/2N7dOx" alt="Rexz Official Logo">
+            <h1>Rexz Official</h1>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-ellipsis-v"></i>
+        </div>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="#" class="nav-link" data-page="home"><i class="fas fa-home"></i> Beranda</a>
+            <a href="#" class="nav-link" data-page="products"><i class="fas fa-shopping-cart"></i> Produk</a>
+            <a href="#" class="nav-link" data-page="free-scripts"><i class="fas fa-file-code"></i> Script Free</a>
+            <a href="#" class="nav-link" data-page="premium-scripts"><i class="fas fa-crown"></i> Script Premium</a>
+            <a href="#" class="nav-link" data-page="testimonials"><i class="fas fa-star"></i> Testimoni</a>
+            <a href="#" class="nav-link" data-page="about"><i class="fas fa-info-circle"></i> Tentang Kami</a>
+            <a href="#" class="nav-link" data-page="contact"><i class="fas fa-phone-alt"></i> Kontak</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="hero">
+                <div class="main-logo">
+                    <img src="https://i.supa.codes/2N7dOx" alt="Rexz Official Logo">
+                </div>
+                <h2>Rexz Official</h2>
+                <p class="welcome-text">
+                    ✨ Selamat datang di dunia digital milik Rexz!
+                    Temukan script powerful, layanan hosting, dan komunitas aktif di sini.
+                </p>
+                
+                <div class="social-links">
+                    <a href="https://www.tiktok.com/@rexzofficial" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/rexz.official" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/@rexzofficial" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="https://whatsapp.com/channel/0029Vay2s9iEFeXfKW5LrE1S" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://chat.whatsapp.com/Kh9BFwPnLjLCVHnqMaa5FV" target="_blank" class="social-icon"><i class="fas fa-users"></i></a>
+                    <a href="https://t.me/rexzofficial" target="_blank" class="social-icon"><i class="fab fa-telegram"></i></a>
+                </div>
+                
+                <div class="quick-nav">
+                    <div class="nav-card" data-page="products">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>Produk</h3>
+                        <p>Panel & Sewa Bot</p>
+                    </div>
+                    <div class="nav-card" data-page="free-scripts">
+                        <i class="fas fa-file-code"></i>
+                        <h3>Script Free</h3>
+                        <p>Gratis & Berkualitas</p>
+                    </div>
+                    <div class="nav-card" data-page="premium-scripts">
+                        <i class="fas fa-crown"></i>
+                        <h3>Script Premium</h3>
+                        <p>Eksklusif & Powerful</p>
+                    </div>
+                    <div class="nav-card" data-page="testimonials">
+                        <i class="fas fa-star"></i>
+                        <h3>Testimoni</h3>
+                        <p>Ulasan Pelanggan</p>
+                    </div>
+                    <div class="nav-card" data-page="about">
+                        <i class="fas fa-info-circle"></i>
+                        <h3>Tentang Kami</h3>
+                        <p>Visi & Misi</p>
+                    </div>
+                    <div class="nav-card" data-page="contact">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Kontak Admin</h3>
+                        <p>Bantuan & Support</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Page -->
+        <section id="products" class="page">
+            <a href="#" class="back-button" data-page="home"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+            <h2><i class="fas fa-server"></i> Panel Hosting</h2>
+            <p style="margin-bottom: 1.5rem; color: #555;">Pilih paket hosting sesuai kebutuhan Anda. Semua server kami lancar, terjaga, aman, dan private.</p>
+            
+            <div class="products-grid">
+                <!-- Panel Hosting -->
+                <div class="product-card">
+                    <h3 class="product-title">Panel 1 GB <span class="price">Rp 1.000</span></h3>
+                    <div class="server-tags">
+                        <span class="server-tag">Lancar</span>
+                        <span class="server-tag">Aman</span>
+                    </div>
+                    <p class="product-desc">Paket dasar untuk pemula dengan kapasitas 1GB, cocok untuk project kecil.</p>
+                    <a href="https://wa.me/6285194293586?text=Halo%20kak,%20saya%20ingin%20beli%20Panel%20Hosting%201GB%20melalui%20website%20Rexz%20Official." class="btn-buy">Beli Sekarang</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-title">Panel 2 GB <span class="price">Rp 2.000</span></h3>
+                    <div class="server-tags">
+                        <span class="server-tag">Lancar</span>
+                        <span class="server-tag">Aman</span>
+                    </div>
+                    <p class="product-desc">Hosting dengan kapasitas 2GB untuk project kecil-menengah.</p>
+                    <a href="https://wa.me/6285194293586?text=Halo%20kak,%20saya%20ingin%20beli%20Panel%20Hosting%202GB%20melalui%20website%20Rexz%20Official." class="btn-buy">Beli Sekarang</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-title">Panel 3 GB <span class="price">Rp 3.000</span></h3>
+                    <div class="server-tags">
+                        <span class="server-tag">Lancar</span>
+                        <span class="server-tag">Aman</span>
+                        <span class="server-tag">Private</span>
+                    </div>
+                    <p class="product-desc">Hosting dengan kapasitas 3GB untuk project menengah.</p>
+                    <a href="https://wa.me/6285194293586?text=Halo%20kak,%20saya%20ingin%20beli%20Panel%20Hosting%203GB%20melalui%20website%20Rexz%20Official." class="btn-buy">Beli Sekarang</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-title">Panel 4 GB <span class="price">Rp 4.000</span></h3>
+                    <div class="server-tags">
+                        <span class="server-tag">Lancar</span>
+                        <span class="server-tag">Aman</span>
+                        <span class="server-tag">Private</span>
+                    </div>
+                    <p class="product-desc">Hosting dengan kapasitas 4GB untuk project menengah.</p>
+                    <a href="https://wa.me/6285194293586?text=Halo%20kak,%20saya%20ingin%20beli%20Panel%20Hosting%204GB%20melalui%20website%20Rexz%20Official." class="btn-buy">Beli Sekarang</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-title">Panel 5 GB <span class="price">Rp 5.000</span></h3>
+                    <div class="server-tags">
+                        <span class="server-tag">Lancar</span>
+                        <span class="server-tag">Aman</span>
+                        <span class="server-tag">Private</span>
+                        <span class="server-tag">Terjaga</span>
+                    </div>
+                    <p class="product-desc">Hosting dengan kapasitas 5GB untuk project menengah-besar.</p>
+                    <a href="https://wa.me/6285194293586?text=Halo%20kak,%20saya%20ingin%20beli%20Panel%20Hosting%205GB%20melalui%20website%20Rexz%20Official." class="btn-buy">Beli Sekarang</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-title">Panel 6 GB <span class="price">Rp 6.000</span></h3>
+                    <div class="server-tags">
+                        <span class="server-tag">Lancar</span>
+                        <span class="server-tag">Aman</span>
+                        <span class="server-tag">Private</span>
+                        <span class="server-tag">Terjaga</span>
+                    </div>
+                    <p class="product-desc">Hosting dengan kapasitas 6GB untuk project besar.</p>
+                    <a href="https://wa.me/6285194293586?text=Halo%20kak,%20saya%20ingin%20beli%20Panel%20Hosting%206GB%20melalui%20website%20Rexz%20Official." class="btn-buy">Beli Sekarang</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-title">Panel 7 GB <span class="price">Rp 7.000</span></h3>
+                    <div class="server-tags">
+                        <span class="server-tag">Lancar</span>
+                        <span class="server-tag">Aman</span>
+                        <span class="server-tag">Private</span>
+                        <span class="server-tag">Terjaga</span>
+                    </div>
+                    <p class="product-desc">Hosting dengan kapasitas 7GB untuk project besar.</p>
+                    <a href="https://wa.me/6285194293586?text=Halo%20kak,%20saya%20ingin%20beli%20Panel%20Hosting%207GB%20melalui%20website%20Rexz%20Official." class="btn-buy">Beli Sekarang</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-title">Panel 8 GB <span class="price">Rp 8.000</span></h3>
+                    <div class="server-tags">
+                        <span class="server-tag">Lancar</span>
+                        <span class="server-tag">Aman</span>
+                        <span class="server-tag">Private</span>
+                        <span class="server-tag">Terjaga</span>
+                    </div>
+                    <p class="product-desc">Hosting dengan kapasitas 8GB untuk project besar.</p>
+                    <a href="https://wa.me/6285194293586?text=Halo%20kak,%20saya%20ingin%20beli%20Panel%20Hosting%208GB%20melalui%20website%20Rexz%20Official." class="btn-buy">Beli Sekarang</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-title">Panel 9 GB <span class="price">Rp 9.000</span></h3>
+                    <div class="server-tags">
+                        <span class="server-tag">Lancar</span>
+                        <span class="server-tag">Aman</span>
+                        <span class="server-tag">Private</span>
+                        <span class="server-tag">Terjaga</span>
+                    </div>
+                    <p class="product-desc">Hosting dengan kapasitas 9GB untuk project besar.</p>
+                    <a href="https://wa.me/6285194293586?text=Halo%20kak,%20saya%20ingin%20beli%20Panel%20Hosting%209GB%20melalui%20website%20Rexz%20Official." class="btn-buy">Beli Sekarang</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-title">Panel 10 GB <span class="price">Rp 10.000</span></h3>
+                    <div class="server-tags">
+                        <span class="server-tag">Lancar</span>
+                        <span class="server-tag">Aman</span>
+                        <span class="server-tag">Private</span>
+                        <span class="server-tag">Terjaga</span>
+                    </div>
+                    <p class="product-desc">Hosting dengan kapasitas 10GB untuk project besar dengan traffic tinggi.</p>
+                    <a href="https://wa.me/6285194293586?text=Halo%20kak,%20saya%20ingin%20beli%20Panel%20Hosting%2010GB%20melalui%20website%20Rexz%20Official." class="btn-buy">Beli Sekarang</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-title">Panel Unlimited <span class="price">Rp 11.000</span></h3>
+                    <div class="server-tags">
+                        <span class="server-tag">Lancar</span>
+                        <span class="server-tag">Aman</span>
+                        <span class="server-tag">Private</span>
+                        <span class="server-tag">Terjaga</span>
+                    </div>
+                    <p class="product-desc">Hosting tanpa batas dengan performa tinggi untuk project besar dan kompleks.</p>
+                    <a href="https://wa.me/6285194293586?text=Halo%20kak,%20saya%20ingin%20beli%20Panel%20Unlimited%20melalui%20website%20Rexz%20Official." class="btn-buy">Beli Sekarang</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-title">Reseller Panel <span class="price">Rp 15.000</span></h3>
+                    <div class="server-tags">
+                        <span class="server-tag">Lancar</span>
+                        <span class="server-tag">Aman</span>
+                        <span class="server-tag">Private</span>
+                        <span class="server-tag">Terjaga</span>
+                    </div>
+                    <p class="product-desc">Paket khusus untuk reseller dengan fitur manajemen akun dan keuntungan besar.</p>
+                    <a href="https://wa.me/6285194293586?text=Halo%20kak,%20saya%20ingin%20beli%20Reseller%20Panel%20melalui%20website%20Rexz%20Official." class="btn-buy">Beli Sekarang</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-title">Admin Panel <span class="price">Rp 20.000</span></h3>
+                    <div class="server-tags">
+                        <span class="server-tag">Lancar</span>
+                        <span class="server-tag">Aman</span>
+                        <span class="server-tag">Private</span>
+                        <span class="server-tag">Terjaga</span>
+                    </div>
+                    <p class="product-desc">Panel dengan hak akses admin penuh untuk manajemen server tingkat lanjut.</p>
+                    <a href="https://wa.me/6285194293586?text=Halo%20kak,%20saya%20ingin%20beli%20Admin%20Panel%20melalui%20website%20Rexz%20Official." class="btn-buy">Beli Sekarang</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-title">Partner Panel <span class="price">Rp 25.000</span></h3>
+                    <div class="server-tags">
+                        <span class="server-tag">Lancar</span>
+                        <span class="server-tag">Aman</span>
+                        <span class="server-tag">Private</span>
+                        <span class="server-tag">Terjaga</span>
+                    </div>
+                    <p class="product-desc">Paket khusus untuk mitra bisnis dengan keuntungan dan akses eksklusif.</p>
+                    <a href="https://wa.me/6285194293586?text=Halo%20kak,%20saya%20ingin%20beli%20Partner%20Panel%20melalui%20website%20Rexz%20Official." class="btn-buy">Beli Sekarang</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3 class="product-title">Owner Panel <span class="price">Rp 30.000</span></h3>
+                    <div class="server-tags">
+                        <span class="server-tag">Lancar</span>
+                        <span class="server-tag">Aman</span>
+                        <span class="server-tag">Private</span>
+                        <span class="server-tag">Terjaga</span>
+                    </div>
+                    <p class="product-desc">Panel dengan hak akses penuh kepemilikan dan kontrol penuh atas server.</p>
+                    <a href="https://wa.me/6285194293586?text=Halo%20kak,%20saya%20ingin%20beli%20Owner%20Panel%20melalui%20website%20Rexz%20Official." class="btn-buy">Beli Sekarang</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Free Scripts Page -->
+        <section id="free-scripts" class="page">
+            <a href="#" class="back-button" data-page="home"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+            <h2><i class="fas fa-file-code"></i> Script Free</h2>
+            
+            <div class="scripts-container">
+                <!-- Meliodas -->
+                <div class="script-card">
+                    <div class="script-image" style="background-image: url('https://i.supa.codes/EHWfMt'); background-size: contain; background-position: center;"></div>
+                    <div class="script-info">
+                        <div class="script-header">
+                            <h3 class="script-name">Meliodas</h3>
+                            <span class="script-date">15/04/2023</span>
+                        </div>
+                        <p>Script WhatsApp bot dasar dengan fitur-fitur esensial untuk pemula.</p>
+                        <div class="script-actions">
+                            <a href="https://youtu.be/kUJ375xq7z8?si=o7L2lJx2PD7ZaEjw" target="_blank" class="btn-review"><i class="fab fa-youtube"></i> Review</a>
+                            <a href="https://www.mediafire.com/file/7eefoitakqm8nox/Meliodas+V1.0+NOENCRIPT.zip/file" target="_blank" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Nine Asisten -->
+                <div class="script-card">
+                    <div class="script-image" style="background-image: url('https://i.supa.codes/QbCAvh'); background-size: contain; background-position: center;"></div>
+                    <div class="script-info">
+                        <div class="script-header">
+                            <h3 class="script-name">Nine Asisten</h3>
+                            <span class="script-date">22/05/2023</span>
+                        </div>
+                        <p>Koleksi tools untuk download media dari berbagai platform.</p>
+                        <div class="script-actions">
+                            <a href="https://youtu.be/iHGkl0CyIiA?si=p9kZY-51rCG7yPy_" target="_blank" class="btn-review"><i class="fab fa-youtube"></i> Review</a>
+                            <a href="https://www.mediafire.com/file/whtsl7f2dy04rjt/SC_NINE_ASSISTANT.zip/file" target="_blank" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- DarkBot -->
+                <div class="script-card">
+                    <div class="script-image" style="background-image: url('https://i.supa.codes/HoT4Sj'); background-size: contain; background-position: center;"></div>
+                    <div class="script-info">
+                        <div class="script-header">
+                            <h3 class="script-name">DarkBot</h3>
+                            <span class="script-date">10/06/2023</span>
+                        </div>
+                        <p>Bot dengan berbagai mini game untuk hiburan grup WhatsApp.</p>
+                        <div class="script-actions">
+                            <a href="https://youtu.be/hHq_Xds5ddY?si=2yJ5XOc-xTbmC0V7" target="_blank" class="btn-review"><i class="fab fa-youtube"></i> Review</a>
+                            <a href="https://www.mediafire.com/file/wpmcv0ojtzevd0d/DarkBot.zip/file" target="_blank" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Simpel bot V6 -->
+                <div class="script-card">
+                    <div class="script-image" style="background-image: url('https://i.supa.codes/fVoIbP'); background-size: contain; background-position: center;"></div>
+                    <div class="script-info">
+                        <div class="script-header">
+                            <h3 class="script-name">Simpel bot V6</h3>
+                            <span class="script-date">18/06/2023</span>
+                        </div>
+                        <p>Bot sederhana dengan fitur-fitur dasar yang mudah digunakan.</p>
+                        <div class="script-actions">
+                            <a href="https://youtu.be/UvJikTaF2lo?si=W0Rspnm_Nvv6sd8T" target="_blank" class="btn-review"><i class="fab fa-youtube"></i> Review</a>
+                            <a href="https://www.mediafire.com/file/ys2w8t9n9t8m8z4/Simple-Botz-6.0.0.zip/file" target="_blank" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- GawrGura-MD -->
+                <div class="script-card">
+                    <div class="script-image" style="background-image: url('https://i.supa.codes/2YPucw'); background-size: contain; background-position: center;"></div>
+                    <div class="script-info">
+                        <div class="script-header">
+                            <h3 class="script-name">GawrGura-MD</h3>
+                            <span class="script-date">25/06/2023</span>
+                        </div>
+                        <p>Bot dengan tema anime dan fitur-fitur unik untuk penggemar.</p>
+                        <div class="script-actions">
+                            <a href="https://youtu.be/kycjZ04Mbis?si=5-8Cqk2eF3Zm7-kA" target="_blank" class="btn-review"><i class="fab fa-youtube"></i> Review</a>
+                            <a href="https://www.mediafire.com/file/1s2wq9ss8koa3lk/GawrGura-V3_Kyami_Silence.zip/file" target="_blank" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FURINA -->
+                <div class="script-card">
+                    <div class="script-image" style="background-image: url('https://i.supa.codes/xm5wMm'); background-size: contain; background-position: center;"></div>
+                    <div class="script-info">
+                        <div class="script-header">
+                            <h3 class="script-name">FURINA</h3>
+                            <span class="script-date">02/07/2023</span>
+                        </div>
+                        <p>Bot dengan fitur-fitur canggih dan dukungan multi-platform.</p>
+                        <div class="script-actions">
+                            <a href="https://youtu.be/ECzZOYR1WvE?si=6vFidGWbPK_ZtMLw" target="_blank" class="btn-review"><i class="fab fa-youtube"></i> Review</a>
+                            <a href="https://www.mediafire.com/file/aah6w74dt97kr1h/Furina_de_Fontaine--MD.zip/file" target="_blank" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Jerone -->
+                <div class="script-card">
+                    <div class="script-image" style="background-image: url('https://i.supa.codes/33FhlN'); background-size: contain; background-position: center;"></div>
+                    <div class="script-info">
+                        <div class="script-header">
+                            <h3 class="script-name">Jerone</h3>
+                            <span class="script-date">09/07/2023</span>
+                        </div>
+                        <p>Bot dengan fitur manajemen grup dan admin yang lengkap.</p>
+                        <div class="script-actions">
+                            <a href="https://youtu.be/5QCwVAjOXxY?si=XF_lhdD4D2VNS4eI" target="_blank" class="btn-review"><i class="fab fa-youtube"></i> Review</a>
+                            <a href="https://www.mediafire.com/file/rjosjuzs8j7lyeu/JERONE-V1.9.zip/file" target="_blank" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Vermeil -->
+                <div class="script-card">
+                    <div class="script-image" style="background-image: url('https://i.supa.codes/5fOWST'); background-size: contain; background-position: center;"></div>
+                    <div class="script-info">
+                        <div class="script-header">
+                            <h3 class="script-name">Vermeil</h3>
+                            <span class="script-date">16/07/2023</span>
+                        </div>
+                        <p>Asisten virtual dengan kemampuan AI dasar untuk tugas sehari-hari.</p>
+                        <div class="script-actions">
+                            <a href="https://youtu.be/mqBVepzhPLk?si=pjzfNHlYyFi_kySs" target="_blank" class="btn-review"><i class="fab fa-youtube"></i> Review</a>
+                            <a href="https://www.mediafire.com/file/98nuzksb4ko5if4/SC+Asistent+Vermeil.zip/file" target="_blank" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Donger -->
+                <div class="script-card">
+                    <div class="script-image" style="background-image: url('https://i.supa.codes/7cvySv'); background-size: contain; background-position: center;"></div>
+                    <div class="script-info">
+                        <div class="script-header">
+                            <h3 class="script-name">Donger</h3>
+                            <span class="script-date">23/07/2023</span>
+                        </div>
+                        <p>Bot dengan fitur-fitur unik dan emoji kustom untuk grup.</p>
+                        <div class="script-actions">
+                            <a href="https://youtu.be/q4lM4FAOIus?si=hhhoqrmAtAHVY0dm" target="_blank" class="btn-review"><i class="fab fa-youtube"></i> Review</a>
+                            <a href="https://www.mediafire.com/file/s9oj5az4obnotby/DONGER+MULTI+DEVICE.zip/file" target="_blank" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Demonic -->
+                <div class="script-card">
+                    <div class="script-image" style="background-image: url('https://i.supa.codes/A8p_Yq'); background-size: contain; background-position: center;"></div>
+                    <div class="script-info">
+                        <div class="script-header">
+                            <h3 class="script-name">Demonic</h3>
+                            <span class="script-date">30/07/2023</span>
+                        </div>
+                        <p>Bot dengan tema dark dan fitur-fitur khusus untuk penggemar genre horor.</p>
+                        <div class="script-actions">
+                            <a href="https://youtu.be/61IPKPBX9EA?si=jkzJCvqDRbNW7-Bm" target="_blank" class="btn-review"><i class="fab fa-youtube"></i> Review</a>
+                            <a href="https://www.mediafire.com/file/cyrvmbnb4lbwoqs/Demonic+Influence+MD..zip/file" target="_blank" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Eid Adha Murabarak -->
+                <div class="script-card">
+                    <div class="script-image" style="background-image: url('https://i.supa.codes/_tGgRH'); background-size: contain; background-position: center;"></div>
+                    <div class="script-info">
+                        <div class="script-header">
+                            <h3 class="script-name">Eid Adha Murabarak</h3>
+                            <span class="script-date">06/08/2023</span>
+                        </div>
+                        <p>Script khusus untuk menyambut Hari Raya Idul Adha dengan fitur-fitur spesial.</p>
+                        <div class="script-actions">
+                            <a href="https://youtu.be/hJyQMl_GnX4?si=kKruPiugaAZ7KG7n" target="_blank" class="btn-review"><i class="fab fa-youtube"></i> Review</a>
+                            <a href="https://www.mediafire.com/file/nrpneoou46n16e8/SC+EID+ADHA+MUBARAK+MD.zip/file" target="_blank" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Osaraga -->
+                <div class="script-card">
+                    <div class="script-image" style="background-image: url('https://i.supa.codes/hfAF3U'); background-size: contain; background-position: center;"></div>
+                    <div class="script-info">
+                        <div class="script-header">
+                            <h3 class="script-name">Osaraga</h3>
+                            <span class="script-date">06/08/2023</span>
+                        </div>
+                        <p>Bot dengan integrasi AI untuk percakapan yang lebih natural dan responsif.</p>
+                        <div class="script-actions">
+                            <a href="https://youtu.be/cv94kcu6SYg?si=oSJT8u_Tw4cGt4Ww" target="_blank" class="btn-review"><i class="fab fa-youtube"></i> Review</a>
+                            <a href="https://www.mediafire.com/file/mc6d8r8tefrxe60/OSARAGI_MD_-_AI.zip/file" target="_blank" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Furina v3 -->
+                <div class="script-card">
+                    <div class="script-image" style="background-image: url('https://files.catbox.moe/qhpiev.jpg'); background-size: contain; background-position: center;"></div>
+                    <div class="script-info">
+                        <div class="script-header">
+                            <h3 class="script-name">Furina v3</h3>
+                            <span class="script-date">14/06/2025</span>
+                        </div>
+                        <p>script WhatsApp bot terbaru dengan 2780+ fitur lengkap, tanpa enkripsi (NO ENC), dan support WA Bisnis & Ori.</p>
+                        <div class="script-actions">
+                            <a href="https://youtu.be/LB49v5a1q9g?si=aW_oSo7WuHrmLmFh" target="_blank" class="btn-review"><i class="fab fa-youtube"></i> Review</a>
+                            <a href="https://www.mediafire.com/file/gciahxhz4yc893p/SC_FURINA_V3_THE_FONTAINE.zip/file" target="_blank" class="btn-download"><i class="fas fa-download"></i> Download</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 2rem; font-style: italic; color: #666;">
+                📌 Jangan lupa Subscribe, Like, dan Komentar video review-nya ya!
+            </p>
+        </section>
+
+        <!-- Premium Scripts Page -->
+        <section id="premium-scripts" class="page">
+            <a href="#" class="back-button" data-page="home"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+            <h2><i class="fas fa-crown"></i> Script Premium</h2>
+            
+            <p style="text-align: center; margin-bottom: 2rem; padding: 1rem; background: #e8f0fe; border-radius: 10px;">
+                🔥 Jangan lewatkan kesempatan menggunakan script premium dari Rexz Official — powerful dan eksklusif!
+            </p>
+            
+            <div class="scripts-container">
+                <!-- Rexz Asisten Ai -->
+                <div class="script-card">
+                    <div class="script-image" style="background-image: url('https://i.supa.codes/Zysq9x'); background-size: contain; background-position: center;"></div>
+                    <div class="script-info">
+                        <div class="script-header">
+                            <h3 class="script-name">Rexz Asisten Ai</h3>
+                            <span class="script-date">01/09/2023</span>
+                        </div>
+                        
+                        <div class="price-tag">
+                            <div>
+                                <span class="original-price">Rp 50.000</span>
+                                <div class="promo-price">Rp 30.000</div>
+                            </div>
+                        </div>
+                        
+                        <p class="script-desc">Asisten virtual berbasis AI dengan kemampuan pemrosesan bahasa alami untuk interaksi lebih manusiawi dan responsif.</p>
+                        
+                        <div class="script-features">
+                            <span class="feature-tag">Free Update</span>
+                            <span class="feature-tag">Multi-Device</span>
+                            <span class="feature-tag">Anti-Ban</span>
+                            <span class="feature-tag">24/7 Support</span>
+                        </div>
+                        
+                        <a href="https://wa.me/6285194293586?text=Halo%20admin,%20saya%20tertarik%20membeli%20script%20premium%20Rexz%20Asisten%20Ai%20dari%20website%20Rexz%20Official." class="btn-buy-script">Beli Sekarang</a>
+                    </div>
+                </div>
+                
+                <!-- Rexz Cpanelx -->
+                <div class="script-card">
+                    <div class="script-image" style="background-image: url('https://i.supa.codes/UbqnA7'); background-size: contain; background-position: center;"></div>
+                    <div class="script-info">
+                        <div class="script-header">
+                            <h3 class="script-name">Rexz Cpanelx</h3>
+                            <span class="script-date">15/09/2023</span>
+                        </div>
+                        
+                        <div class="price-tag">
+                            <div>
+                                <span class="original-price">Rp 30.000</span>
+                                <div class="promo-price">Rp 15.000</div>
+                            </div>
+                        </div>
+                        
+                        <p class="script-desc">Script WhatsApp bot dengan integrasi cPanel untuk manajemen server yang mudah dan efisien.</p>
+                        
+                        <div class="script-features">
+                            <span class="feature-tag">6 Server</span>
+                            <span class="feature-tag">Full Button</span>
+                            <span class="feature-tag">Free Update</span>
+                            <span class="feature-tag">Anti-Ban</span>
+                        </div>
+                        
+                        <a href="https://wa.me/6285194293586?text=Halo%20admin,%20saya%20tertarik%20membeli%20script%20premium%20Rexz%20Cpanelx%20dari%20website%20Rexz%20Official." class="btn-buy-script">Beli Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Page -->
+        <section id="testimonials" class="page">
+            <a href="#" class="back-button" data-page="home"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+            <h2><i class="fas fa-star"></i> Testimoni Pelanggan</h2>
+            
+            <div class="testimonials-grid">
+                <!-- Testimoni 1-12 -->
+                <div class="testimonial-card" data-image="https://i.supa.codes/OkAe66">
+                    <div class="testimonial-image" style="background-image: url('https://i.supa.codes/OkAe66');"></div>
+                    <p class="testimonial-caption">Reseller panel</p>
+                </div>
+                
+                <div class="testimonial-card" data-image="https://i.supa.codes/xukiZO">
+                    <div class="testimonial-image" style="background-image: url('https://i.supa.codes/xukiZO');"></div>
+                    <p class="testimonial-caption">Script asisten ai</p>
+                </div>
+                
+                <div class="testimonial-card" data-image="https://i.supa.codes/Ixbj62">
+                    <div class="testimonial-image" style="background-image: url('https://i.supa.codes/Ixbj62');"></div>
+                    <p class="testimonial-caption">Panel unlimited</p>
+                </div>
+                
+                <div class="testimonial-card" data-image="https://i.supa.codes/Ba6HLs">
+                    <div class="testimonial-image" style="background-image: url('https://i.supa.codes/Ba6HLs');"></div>
+                    <p class="testimonial-caption">Reseller panel</p>
+                </div>
+                
+                <div class="testimonial-card" data-image="https://i.supa.codes/p7wcSE">
+                    <div class="testimonial-image" style="background-image: url('https://i.supa.codes/p7wcSE');"></div>
+                    <p class="testimonial-caption">Script Rexz Cpanelx</p>
+                </div>
+                
+                <div class="testimonial-card" data-image="https://i.supa.codes/zB4Gci">
+                    <div class="testimonial-image" style="background-image: url('https://i.supa.codes/zB4Gci');"></div>
+                    <p class="testimonial-caption">Panel unlimited</p>
+                </div>
+                
+                <div class="testimonial-card" data-image="https://i.supa.codes/3zc9Y6">
+                    <div class="testimonial-image" style="background-image: url('https://i.supa.codes/3zc9Y6');"></div>
+                    <p class="testimonial-caption">Script Rexz Cpanelx</p>
+                </div>
+                
+                <div class="testimonial-card" data-image="https://i.supa.codes/NPC-TY">
+                    <div class="testimonial-image" style="background-image: url('https://i.supa.codes/NPC-TY');"></div>
+                    <p class="testimonial-caption">Script Rexz asisten ai</p>
+                </div>
+                
+                <div class="testimonial-card" data-image="https://i.supa.codes/JCrGY2">
+                    <div class="testimonial-image" style="background-image: url('https://i.supa.codes/JCrGY2');"></div>
+                    <p class="testimonial-caption">Script Rexz Cpanelx</p>
+                </div>
+                
+                <div class="testimonial-card" data-image="https://i.supa.codes/cSrfC2">
+                    <div class="testimonial-image" style="background-image: url('https://i.supa.codes/cSrfC2');"></div>
+                    <p class="testimonial-caption">Script Rexz Cpanelx</p>
+                </div>
+                
+                <div class="testimonial-card" data-image="https://i.supa.codes/lq12Tb">
+                    <div class="testimonial-image" style="background-image: url('https://i.supa.codes/lq12Tb');"></div>
+                    <p class="testimonial-caption">Script Rexz Cpanelx</p>
+                </div>
+                
+                <div class="testimonial-card" data-image="https://i.supa.codes/9_hnJX">
+                    <div class="testimonial-image" style="background-image: url('https://i.supa.codes/9_hnJX');"></div>
+                    <p class="testimonial-caption">Script Rexz asisten ai</p>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 2rem; font-style: italic; color: #666; padding: 1rem; background: #e8f0fe; border-radius: 10px;">
+                🙏 Terima kasih sudah order di Rexz Official!
+            </p>
+        </section>
+
+        <!-- About Page -->
+        <section id="about" class="page">
+            <a href="#" class="back-button" data-page="home"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+            <h2><i class="fas fa-info-circle"></i> Tentang Kami</h2>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>"Rexz Official berdiri untuk membantu pengguna mendapatkan akses ke tools digital terbaik, dari script WhatsApp bot hingga layanan panel yang terjangkau."</p>
+                    <br>
+                    <p>Kami memulai perjalanan ini pada tahun 2021 dengan tujuan menyediakan solusi digital yang mudah diakses dan terjangkau bagi semua kalangan. Dengan pengalaman lebih dari 3 tahun di industri teknologi, tim Rexz Official terus berinovasi untuk menghadirkan produk-produk berkualitas tinggi.</p>
+                    <br>
+                    <p>Visi kami adalah menjadi penyedia solusi digital terdepan di Indonesia, sementara misi kami adalah memberikan pengalaman terbaik kepada pelanggan dengan produk inovatif, dukungan penuh, dan harga yang kompetitif.</p>
+                </div>
+                
+                <div style="text-align: center; margin: 2rem 0;">
+                    <img src="https://i.supa.codes/2N7dOx" alt="Tim Rexz Official" style="width: 200px; border-radius: 50%; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+                </div>
+                
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-number">5K+</div>
+                        <div class="stat-label">Pengguna Aktif</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">120+</div>
+                        <div class="stat-label">Project Sukses</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Produk Digital</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3+</div>
+                        <div class="stat-label">Tahun Pengalaman</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact" class="page">
+            <a href="#" class="back-button" data-page="home"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+            <h2><i class="fas fa-phone-alt"></i> Kontak Admin</h2>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-text">
+                            <strong>WhatsApp</strong><br>
+                            <a href="https://wa.me/6285194293586">+62 851-9429-3586</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-telegram"></i>
+                        </div>
+                        <div class="contact-text">
+                            <strong>Telegram</strong><br>
+                            <a href="https://t.me/rexzofficial">@rexzofficial</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <strong>Jam Operasional</strong><br>
+                            08.00 – 22.00 WIB
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="https://wa.me/6285194293586" class="btn-contact">
+                    <i class="fab fa-whatsapp"></i> Hubungi Admin Sekarang
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2023 Rexz Official. Hak Cipta Dilindungi.</p>
+    </footer>
+
+    <!-- Music Control -->
+    <div class="music-control" id="musicControl">
+        <i class="fas fa-volume-up"></i>
+    </div>
+    
+    <!-- Audio Element -->
+    <audio id="bgMusic" loop>
+        <source src="https://fastrestapis.fasturl.cloud/file/v2/M9LFZ1g.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Modal for Image Zoom -->
+    <div class="modal" id="imageModal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Testimoni">
+        </div>
+    </div>
+
+    <script>
+        // Generate stars for background
+        function createStars() {
+            const container = document.getElementById('stars');
+            const starCount = 100;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random position
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                star.style.left = `${posX}%`;
+                star.style.top = `${posY}%`;
+                
+                // Random size
+                const size = Math.random() * 3 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // Random animation duration
+                const duration = Math.random() * 5 + 3;
+                star.style.setProperty('--duration', `${duration}s`);
+                
+                // Random delay
+                const delay = Math.random() * 5;
+                star.style.animationDelay = `${delay}s`;
+                
+                container.appendChild(star);
+            }
+        }
+        
+        // Navigation system
+        function setupNavigation() {
+            const menuToggle = document.getElementById('menuToggle');
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            const navLinks = document.querySelectorAll('.nav-link, .nav-card, .back-button');
+            const pages = document.querySelectorAll('.page');
+            
+            // Toggle dropdown menu
+            menuToggle.addEventListener('click', () => {
+                dropdownMenu.classList.toggle('show');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!menuToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+            
+            // Navigation logic
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetPage = link.getAttribute('data-page');
+                    
+                    // Hide all pages
+                    pages.forEach(page => {
+                        page.classList.remove('active');
+                    });
+                    
+                    // Show target page
+                    document.getElementById(targetPage).classList.add('active');
+                    
+                    // Close dropdown if open
+                    dropdownMenu.classList.remove('show');
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                });
+            });
+        }
+        
+        // Music control
+        function setupMusic() {
+            const musicControl = document.getElementById('musicControl');
+            const bgMusic = document.getElementById('bgMusic');
+            let isPlaying = false;
+            
+            // Try to play music on user interaction
+            document.body.addEventListener('click', () => {
+                if (!isPlaying) {
+                    bgMusic.play()
+                        .then(() => {
+                            isPlaying = true;
+                            musicControl.innerHTML = '<i class="fas fa-volume-up"></i>';
+                        })
+                        .catch(e => console.log('Autoplay prevented:', e));
+                }
+            }, { once: true });
+            
+            // Toggle mute
+            musicControl.addEventListener('click', () => {
+                bgMusic.muted = !bgMusic.muted;
+                musicControl.innerHTML = bgMusic.muted ? 
+                    '<i class="fas fa-volume-mute"></i>' : 
+                    '<i class="fas fa-volume-up"></i>';
+            });
+        }
+        
+        // Testimonial image zoom
+        function setupTestimonialZoom() {
+            const testimonialCards = document.querySelectorAll('.testimonial-card');
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeModal = document.querySelector('.close-modal');
+            
+            testimonialCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const imageUrl = card.getAttribute('data-image');
+                    modalImg.src = imageUrl;
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            closeModal.addEventListener('click', () => {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+        
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            createStars();
+            setupNavigation();
+            setupMusic();
+            setupTestimonialZoom();
+        });
+    </script>
+</body>
+</html>
